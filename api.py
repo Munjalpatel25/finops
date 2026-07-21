@@ -72,11 +72,12 @@ log = logging.getLogger("api")
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    from storage import init_db
+    init_db()
     log.info("FinOps API starting — connected to %s", DB_PATH)
     yield
     log.info("FinOps API shutting down")
-
-
+    
 app = FastAPI(
     title="FinOps Intelligence API",
     description="Cloud FinOps Intelligence Platform — Phase 4 REST API",
