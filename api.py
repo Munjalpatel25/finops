@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Phase 4 + 5 - FastAPI Backend
 ==============================
@@ -41,6 +40,10 @@ except AttributeError:
 from fastapi import FastAPI, Query, BackgroundTasks, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+
+import os
+os.environ["OPENBLAS_NUM_THREADS"] = "1"
+os.environ["OMP_NUM_THREADS"] = "1"
 
 import pandas as pd
 import numpy as np
