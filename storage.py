@@ -130,6 +130,7 @@ CREATE INDEX IF NOT EXISTS idx_forecast_date  ON forecasts(target_date, horizon)
 
 @contextmanager
 def get_conn(db_path: str = DB_PATH):
+    os.makedirs(os.path.dirname(db_path), exist_ok=True)
     conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA journal_mode=WAL")
